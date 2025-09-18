@@ -12,7 +12,7 @@ export function isValidUrl(s) {
   }
 }
 
-// coarse location helper: rounds lat/lon to 1 decimal -> coarse granularity
+
 export function coarseFromCoords(lat, lon) {
   return `${lat.toFixed(1)},${lon.toFixed(1)}`;
 }
