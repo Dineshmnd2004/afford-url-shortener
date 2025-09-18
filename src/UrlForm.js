@@ -1,4 +1,4 @@
-// src/components/UrlForm.js
+
 import React, { useState } from "react";
 import { Box, TextField, Button, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -29,14 +29,14 @@ function UrlForm({ onSubmitBatch }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // basic client validation per row
+   
     const cleaned = rows.map((r) => ({
       original: r.original.trim(),
       expiry: r.expiry ? parseInt(r.expiry, 10) : 30, // default 30
       custom: r.custom.trim(),
     }));
 
-    // validate entries
+    
     for (let i = 0; i < cleaned.length; i++) {
       const r = cleaned[i];
       if (!isValidUrl(r.original)) {
@@ -57,7 +57,7 @@ function UrlForm({ onSubmitBatch }) {
     }
 
     onSubmitBatch(cleaned);
-    // reset to single row
+    
     setRows([{ original: "", expiry: "", custom: "" }]);
   }
 
