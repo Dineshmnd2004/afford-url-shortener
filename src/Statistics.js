@@ -1,4 +1,4 @@
-// src/pages/Statistics.js
+
 import React from "react";
 import { loadDB } from "./storage";
 import { Container, Card, CardContent, Typography } from "@mui/material";
