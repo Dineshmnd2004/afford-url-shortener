@@ -1,4 +1,4 @@
-// src/pages/Redirector.js
+
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { loadDB, addClick } from "./storage";
@@ -8,7 +8,7 @@ import { Container, Typography, Button } from "@mui/material";
 
 function Redirector() {
   const { code } = useParams();
-  const [status, setStatus] = useState("checking"); // checking | failed | redirecting | expired
+  const [status, setStatus] = useState("checking"); 
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -31,10 +31,9 @@ function Redirector() {
       }
 
       setStatus("redirecting");
-      // record click details (timestamp, referrer, coarse location)
+      
       const click = { time: new Date().toISOString(), referrer: document.referrer || "direct", loc: "unknown" };
 
-      // try to get geo (optional). If user blocks, fallback to unknown.
       try {
         const pos = await new Promise((resolve, reject) => {
           if (!navigator.geolocation) return resolve(null);
@@ -45,13 +44,12 @@ function Redirector() {
           click.loc = coarseFromCoords(pos.coords.latitude, pos.coords.longitude);
         }
       } catch (e) {
-        /* ignore - keep loc unknown */
+
       }
 
       addClick(code, click);
       logEvent("redirect_success", { code, click });
 
-      // final redirect: replace so back button doesn't re-run
       window.location.replace(entry.original);
     }
 
@@ -69,7 +67,7 @@ function Redirector() {
       </Container>
     );
   }
-  return null; // while redirecting, nothing needs showing
+  return null; 
 }
 
 export default Redirector;
