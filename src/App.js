@@ -1,4 +1,4 @@
-// src/App.js
+
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/stats" element={<Statistics />} />
-          {/* catch-all for short codes; keep it last */}
+        
           <Route path="/:code" element={<Redirector />} />
         </Routes>
       </Container>
