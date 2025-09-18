@@ -1,4 +1,4 @@
-// src/pages/Home.js
+
 import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import UrlForm from "./UrlForm";
@@ -10,23 +10,23 @@ import logEvent from "./logger";
 function Home() {
   const [created, setCreated] = useState([]);
 
-  // takes the cleaned rows from form
+  
   function handleBatch(rows) {
     const newCreated = [];
 
     for (const r of rows) {
-      // determine code (validate uniqueness)
+      
       let code = r.custom || simpleCode();
 
-      // if custom provided, fail if exists
+     
       if (r.custom) {
         if (existsCode(code)) {
           alert(`Shortcode "${code}" is already taken. Choose another.`);
           logEvent("short_create_fail", { reason: "custom_taken", code });
-          continue; // skip this row
+          continue; 
         }
       } else {
-        // auto-generate until unique (small loop)
+       
         let attempts = 0;
         while (existsCode(code) && attempts < 8) {
           code = simpleCode();
